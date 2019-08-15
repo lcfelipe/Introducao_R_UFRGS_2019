@@ -123,8 +123,7 @@ diag(M_T%*%N_T)
 det(M_T%*%N_T)
 solve(M_T%*%N_T)
 
-array(0:119,dim=c(5,3,2,4))
-
+md<-array(0:119,dim=c(5,3,2,4))
 
 # Crie uma lista contendo os seguintes itens: n??umeros pares de 2 a 20,
 # e os nomes dos estados da regi??ao sul.
@@ -132,11 +131,63 @@ array(0:119,dim=c(5,3,2,4))
 # 4 e menores que 16, bem como o nome do estado mais ao sul.
 # Utilize os indexadores para isto.
 
-Lista<-list(v_num=seq(2,20,by=2),estados_sul=c('Paran??','Santa Catarina','Rio Grande do Sul'))
+Lista<-list(v_num=seq(2,20,by=2)
+            ,estados_sul=c('Paran??','Santa Catarina','Rio Grande do Sul'))
 Lista
 
 vetor_par<-Lista$v_num[Lista$v_num>4 & Lista$v_num<16]
-vetor_estado<-Lista$estados_sul[length(Lista$estados_sul)]
-mega_vetor<-c(Lista$v_num[Lista$v_num>4 & Lista$v_num<16],Lista$estados_sul[length(Lista$estados_sul)])
+vetor_estado<-Lista$estados_sul[which(Lista$estados_sul=="Rio Grande do Sul")]
 
+mega_vetor<-c(Lista$v_num[Lista$v_num>4 & Lista$v_num<16]
+              ,Lista$estados_sul[length(Lista$estados_sul)])
 mega_vetor
+
+# I Crie um vetor contendo os n´umeros de 1 a 10.
+# I Crie outro vetor que seja a raiz quadrada dos elementos do primeiro
+# vetor.
+# I Crie um data frame com essas duas vari´aveis.
+# I Vizualize este data frame com o editor.
+
+
+vetor<-1:10
+vetor2<- sqrt(vetor)
+
+join_vetor<-rbind(vetor,vetor2)
+df<-as.data.frame(join_vetor)
+df
+edit(df)
+
+df2<-data.frame(vetor,vetor2)
+edit(df2)
+
+
+write.csv(df,file='teste.csv')
+
+teste<-read.csv('teste.csv')
+head(teste)
+a<-as.data.frame(mega_vetor)
+pathwd<-gsub(" ", "", paste(getwd(),'/R'), fixed = TRUE)
+pathwd
+
+setwd("C:/Users/00319063/Documents/")
+getwd()
+
+
+write.table(md,file='teste.txt',sep = ';')
+red<-as.data.frame(read.table('teste.txt',sep=';'))
+
+head(red)
+
+a<-seq(1,10)
+a
+b<-seq(2,20,by=2)
+b
+c<-seq(3,30,by=3)
+c
+d<-seq(4,40,by=4)
+d
+M<-cbind(a,b,c,d)
+M
+write.table(M,file='teste.txt',sep = '-')
+a<-read.table('teste.txt',sep='-')
+
