@@ -142,10 +142,10 @@ mega_vetor<-c(Lista$v_num[Lista$v_num>4 & Lista$v_num<16]
               ,Lista$estados_sul[length(Lista$estados_sul)])
 mega_vetor
 
-# I Crie um vetor contendo os n´umeros de 1 a 10.
+# I Crie um vetor contendo os n???umeros de 1 a 10.
 # I Crie outro vetor que seja a raiz quadrada dos elementos do primeiro
 # vetor.
-# I Crie um data frame com essas duas vari´aveis.
+# I Crie um data frame com essas duas vari???aveis.
 # I Vizualize este data frame com o editor.
 
 
@@ -161,13 +161,15 @@ df2<-data.frame(vetor,vetor2)
 edit(df2)
 
 
-write.csv(df,file='teste.csv')
+# write.csv(df,file='teste.csv')
+# 
+# teste<-read.csv('teste.csv')
+# head(teste)
+# a<-as.data.frame(mega_vetor)
+# pathwd<-gsub(" ", "", paste(getwd(),'/R'), fixed = TRUE)
+# pathwd
 
-teste<-read.csv('teste.csv')
-head(teste)
-a<-as.data.frame(mega_vetor)
-pathwd<-gsub(" ", "", paste(getwd(),'/R'), fixed = TRUE)
-pathwd
+
 
 setwd("C:/Users/00319063/Documents/")
 getwd()
@@ -191,3 +193,112 @@ M
 write.table(M,file='teste.txt',sep = '-')
 a<-read.table('teste.txt',sep='-')
 
+
+# Crie um vetor de n´umeros inteiros de 1 at´e 10.
+# I Fa¸ca um c´odigo que compute a raiz quadrada se o elemento do
+# vetor for menor que 5, e eleve o n´umero ao quadrado de for maior
+# ou igual a 5.
+# I Atribua os valores obtidos a um novo vetor. Crie uma matriz
+# juntando os dois vetores por colunas.
+
+vet<-1:10
+
+vet2<-ifelse(vet<5,sqrt(vet),vet**2)
+
+vet3<-cbind(vet,vet2)
+vet3
+
+# I Considere a matriz de pre¸cos ABC em quatro lojas do exerc´icio
+# anterior.
+# I Compute os pre¸cos m´edios dos tr^es produtos em cada uma das
+# quatro lojas.
+# I Compute estes mesmos
+
+A <- c(2, 4, 3, 5)
+B <- c(1, 2, 6, 7)
+C <- c(5, 3, 4, 1)
+Precos <- cbind(A, B, C)
+Precos
+
+apply(Precos,1,mean)#1 faz a media por linha
+apply(Precos,2,mean)#2 faz a media por colunas
+
+# I Considere a matriz de pre¸cos ABC em quatro lojas do exerc´icio
+# anterior.
+# I Compute os pre¸cos m´edios dos tr^es produtos em cada uma das
+# quatro lojas.
+# I Compute estes mesmos pre¸cos utilizando a fun¸c~ao for, atribuindo a
+# um novo objeto.
+lojas<-nrow(Precos)
+produtos<-ncol(Precos)
+
+for (i in 1:lojas){
+  lj[i]<-mean(Precos[i,])
+}
+
+for(j in 1:produtos){
+  prdt[j]<-mean(Precos[,j])
+}
+
+# I Considere novamente a seguinte matriz:
+#   x <- 1:10
+# y <- ifelse(x < 5, sqrt(x), x^2)
+# m <- cbind(x,y)
+# I Crie uma matriz com a mesma dimens~ao da anterior, por´em formada
+# apenas por zeros.
+# I Fa¸ca um c´odigo que preencha cada c´elula [i,j] desta nova matriz
+# pelo desvio padr~ao (sd()) dos n´umeros da matriz original exceto os
+# da linha i e coluna j.
+
+x <- 1:20
+y <- ifelse(x < 5, sqrt(x), x^2)
+m <- cbind(x,y)
+
+m2=matrix(rep(0, 40), ncol = 2)
+for(i in 1:nrow(m2)){
+  for(j in 1:ncol(m2)){
+    m2[i,j] = sd(m[-i,-j])
+  }
+}
+m2
+
+# I Crie uma fun¸c~ao para computar a m´edia de um vetor. Verifique que
+# ela funciona.
+# I Crie uma fun¸c~ao que compute as ra´izes de uma equa¸c~ao do segundo
+# grau aX2 + bX + c = 0. Considere o caso em que ??? < 0, quando
+# n~ao existem ra´izes reais, como imposs´ivel (uma mensagem de erro
+#                                               customizada seria bem vinda). Verifique que ela funciona.
+# I Dicas: A f´ormula de Bhaskara ´e uma fun¸c~ao dos coeficientes de uma
+# equa¸c~ao de segundo grau. Use o procedimento com if() para os
+# casos poss´iveis de ???.
+
+media_vetor<-function(x){
+  if(is.vector((x))){
+    return (sum(x)/length(x))
+    
+  }
+  else{
+    print('Não é vetor')
+  }
+  
+}
+
+bask<-function(a,b,c){
+  delta = b**2 - 4*a*c
+  if(delta<0){
+    print('Não possui raizes reais')
+  }
+  if(delta==0){
+    x = (-b)/2*a
+    return(x)
+  }
+  if(delta>0){
+    x1 = (-b + sqrt(delta))/2*a
+    x2 = (-b - sqrt(delta))/2*a
+    return(cbind(x1,x2,delta))
+  }
+  
+}
+
+result<-bask(1,8,2)
+result
