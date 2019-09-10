@@ -194,9 +194,9 @@ write.table(M,file='teste.txt',sep = '-')
 a<-read.table('teste.txt',sep='-')
 
 
-# Crie um vetor de n´umeros inteiros de 1 at´e 10.
-# I Fa¸ca um c´odigo que compute a raiz quadrada se o elemento do
-# vetor for menor que 5, e eleve o n´umero ao quadrado de for maior
+# Crie um vetor de n???umeros inteiros de 1 at???e 10.
+# I Fa???ca um c???odigo que compute a raiz quadrada se o elemento do
+# vetor for menor que 5, e eleve o n???umero ao quadrado de for maior
 # ou igual a 5.
 # I Atribua os valores obtidos a um novo vetor. Crie uma matriz
 # juntando os dois vetores por colunas.
@@ -208,9 +208,9 @@ vet2<-ifelse(vet<5,sqrt(vet),vet**2)
 vet3<-cbind(vet,vet2)
 vet3
 
-# I Considere a matriz de pre¸cos ABC em quatro lojas do exerc´icio
+# I Considere a matriz de pre???cos ABC em quatro lojas do exerc???icio
 # anterior.
-# I Compute os pre¸cos m´edios dos tr^es produtos em cada uma das
+# I Compute os pre???cos m???edios dos tr^es produtos em cada uma das
 # quatro lojas.
 # I Compute estes mesmos
 
@@ -223,11 +223,11 @@ Precos
 apply(Precos,1,mean)#1 faz a media por linha
 apply(Precos,2,mean)#2 faz a media por colunas
 
-# I Considere a matriz de pre¸cos ABC em quatro lojas do exerc´icio
+# I Considere a matriz de pre???cos ABC em quatro lojas do exerc???icio
 # anterior.
-# I Compute os pre¸cos m´edios dos tr^es produtos em cada uma das
+# I Compute os pre???cos m???edios dos tr^es produtos em cada uma das
 # quatro lojas.
-# I Compute estes mesmos pre¸cos utilizando a fun¸c~ao for, atribuindo a
+# I Compute estes mesmos pre???cos utilizando a fun???c~ao for, atribuindo a
 # um novo objeto.
 lojas<-nrow(Precos)
 produtos<-ncol(Precos)
@@ -244,10 +244,10 @@ for(j in 1:produtos){
 #   x <- 1:10
 # y <- ifelse(x < 5, sqrt(x), x^2)
 # m <- cbind(x,y)
-# I Crie uma matriz com a mesma dimens~ao da anterior, por´em formada
+# I Crie uma matriz com a mesma dimens~ao da anterior, por???em formada
 # apenas por zeros.
-# I Fa¸ca um c´odigo que preencha cada c´elula [i,j] desta nova matriz
-# pelo desvio padr~ao (sd()) dos n´umeros da matriz original exceto os
+# I Fa???ca um c???odigo que preencha cada c???elula [i,j] desta nova matriz
+# pelo desvio padr~ao (sd()) dos n???umeros da matriz original exceto os
 # da linha i e coluna j.
 
 x <- 1:20
@@ -262,15 +262,15 @@ for(i in 1:nrow(m2)){
 }
 m2
 
-# I Crie uma fun¸c~ao para computar a m´edia de um vetor. Verifique que
+# I Crie uma fun???c~ao para computar a m???edia de um vetor. Verifique que
 # ela funciona.
-# I Crie uma fun¸c~ao que compute as ra´izes de uma equa¸c~ao do segundo
+# I Crie uma fun???c~ao que compute as ra???izes de uma equa???c~ao do segundo
 # grau aX2 + bX + c = 0. Considere o caso em que ??? < 0, quando
-# n~ao existem ra´izes reais, como imposs´ivel (uma mensagem de erro
+# n~ao existem ra???izes reais, como imposs???ivel (uma mensagem de erro
 #                                               customizada seria bem vinda). Verifique que ela funciona.
-# I Dicas: A f´ormula de Bhaskara ´e uma fun¸c~ao dos coeficientes de uma
-# equa¸c~ao de segundo grau. Use o procedimento com if() para os
-# casos poss´iveis de ???.
+# I Dicas: A f???ormula de Bhaskara ???e uma fun???c~ao dos coeficientes de uma
+# equa???c~ao de segundo grau. Use o procedimento com if() para os
+# casos poss???iveis de ???.
 
 media_vetor<-function(x){
   if(is.vector((x))){
@@ -278,7 +278,7 @@ media_vetor<-function(x){
     
   }
   else{
-    print('Não é vetor')
+    print('N???o ??? vetor')
   }
   
 }
@@ -286,7 +286,7 @@ media_vetor<-function(x){
 bask<-function(a,b,c){
   delta = b**2 - 4*a*c
   if(delta<0){
-    print('Não possui raizes reais')
+    print('N???o possui raizes reais')
   }
   if(delta==0){
     x = (-b)/2*a
@@ -301,4 +301,47 @@ bask<-function(a,b,c){
 }
 
 result<-bask(1,8,2)
-result
+
+
+x <- -60:100
+
+plot(x, type = "l", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot",lwd=8,col=2)
+points(100,0)
+abline(h=0,col=2)
+abline(v=100)
+text(110,-5,'alou')
+
+
+pdf("meu_plot.pdf")
+par(mfrow=c(3,1))
+x <- 1:100
+y<-100:1
+plot(x, type = "l", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot")
+plot(x, type = "p", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot", col = 2, lwd = 8)
+plot(y, type = "o", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot")
+dev.off()
+
+
+pdf("meu_plot.pdf")
+par(mfcol=c(2,3))
+plot(x,y, type = "l", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot")
+plot(x,y, type = "l", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot",col=4)
+plot(x, type = "l", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot")
+plot(x, type = "p", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot", col = 2, lwd = 8)
+plot(y, type = "o", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot")
+plot(x, type = "l", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot")
+plot(x, type = "p", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot", col = 2, lwd = 8)
+plot(x,y, type = "o", xlab = "Objeto", ylab = "Valores",
+     main = "meu plot")
+dev.off()
